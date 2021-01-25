@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.board {
+  background-color: beige;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto);
+
+}
+
+.cell {
+  height: 250px;
+  width: 250px;
+  border: 3px solid #000;
+  border-top: 0;
+  border-left: 0;
+  position: relative;
+}
+.cell:nth-child(3n + 3) {
+  border-right: 0;
+}
+.cell:nth-child(1n + 7) {
+  border-bottom: 0;
+}
+
+.cell.x::before, .cell.x::after {
+  content: '';
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  background-color: black;
+  height: 5px;
+  width: 200px;
+}.cell.x::before {
+  transform: rotate(45deg);
+} .cell.x::after {
+  transform: rotate(-45deg);
+}
+
+.cell.o::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  background-color: transparent;
+  border: 5px solid black;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+}
