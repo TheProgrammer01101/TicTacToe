@@ -18,75 +18,60 @@ cells.forEach(cell => {
 
     if(playerTurn == "x") {
       cell.classList.add(playerTurn);
-      if(cells[0].classList.contains("x") && cells[4].classList.contains("x") && cells[8].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      else if(cells[2].classList.contains("x") && cells[4].classList.contains("x") && cells[6].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[3].classList.contains("x") && cells[4].classList.contains("x") && cells[5].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[1].classList.contains("x") && cells[4].classList.contains("x") && cells[7].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[0].classList.contains("x") && cells[1].classList.contains("x") && cells[2].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[6].classList.contains("x") && cells[7].classList.contains("x") && cells[8].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[0].classList.contains("x") && cells[3].classList.contains("x") && cells[6].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[2].classList.contains("x") && cells[5].classList.contains("x") && cells[8].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      else {
-      playerTurn = "o";
-      }
+      winCheck(playerTurn);
+      playerTurn = "o"; 
 
     } else if(playerTurn == "o"){
       cell.classList.add(playerTurn);
-      if(cells[0].classList.contains("o") && cells[4].classList.contains("o") && cells[8].classList.contains("o")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      else if(cells[2].classList.contains("o") && cells[4].classList.contains("o") && cells[6].classList.contains("o")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[3].classList.contains("o") && cells[4].classList.contains("o") && cells[5].classList.contains("o")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[1].classList.contains("o") && cells[4].classList.contains("o") && cells[7].classList.contains("o")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[0].classList.contains("o") && cells[1].classList.contains("o") && cells[2].classList.contains("o")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[6].classList.contains("o") && cells[7].classList.contains("o") && cells[8].classList.contains("o")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[0].classList.contains("o") && cells[3].classList.contains("o") && cells[6].classList.contains("o")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      
-      else if(cells[2].classList.contains("o") && cells[5].classList.contains("x") && cells[8].classList.contains("x")) {
-        alert(playerTurn.toUpperCase() + " won!");
-      }
-      else{
-        playerTurn = "x";
-      }
+      winCheck(playerTurn);
+      playerTurn = "x";
     } 
   })
 })
+
+function resetBoard() {
+  cells.forEach(cell => {
+    cell.className = "cell";
+  });
+}
+
+function winCheck(player) {
+  if(cells[0].classList.contains(player) && cells[4].classList.contains(player) && cells[8].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+  else if(cells[2].classList.contains(player) && cells[4].classList.contains(player) && cells[6].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+  
+  else if(cells[3].classList.contains(player) && cells[4].classList.contains(player) && cells[5].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+  
+  else if(cells[1].classList.contains(player) && cells[4].classList.contains(player) && cells[7].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+  
+  else if(cells[0].classList.contains(player) && cells[1].classList.contains(player) && cells[2].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+  
+  else if(cells[6].classList.contains(player) && cells[7].classList.contains(player) && cells[8].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+  
+  else if(cells[0].classList.contains(player) && cells[3].classList.contains(player) && cells[6].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+  
+  else if(cells[2].classList.contains(player) && cells[5].classList.contains(player) && cells[8].classList.contains(player)) {
+    alert(playerTurn.toUpperCase() + " won!");
+    resetBoard();
+  }
+}
