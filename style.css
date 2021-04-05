@@ -15,8 +15,8 @@
 }
 
 .cell {
-  height: 100px;
-  width: 100px;
+  height: 300px;
+  width: 300px;
   border: 3px solid #000;
   border-top: 0;
   border-left: 0;
@@ -32,11 +32,14 @@
 .cell.x::before, .cell.x::after {
   content: '';
   position: absolute;
-  top: 50px;
-  left: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   background-color: black;
-  height: 3px;
-  width: 65px;
+  height: 9px;
+  width: 195px;
 }.cell.x::before {
   transform: rotate(45deg);
 } .cell.x::after {
@@ -45,12 +48,73 @@
 .cell.o::before {
   content: '';
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   background-color: transparent;
-  border: 3px solid black;
-  height: 65px;
-  width: 65px;
+  border: 9px solid black;
+  height: 195px;
+  width: 195px;
   border-radius: 50%;
 }
 
+@media screen and (max-width: 1024px) {
+  .cell {
+    height: calc(300px/2);
+    width: calc(300px/2);
+  }.cell.x::before, .cell.x::after {
+    height: calc(9px/2);
+    width: calc(195px/2);
+  }
+  .cell.o::before {
+    border: calc(9px/2)solid black;
+    height: calc(195px/2);
+    width: calc(195px/2);
+  }
+}
+
+@media screen and (max-height: 950px) {
+  .cell {
+    height: calc(300px/2);
+    width: calc(300px/2);
+  }.cell.x::before, .cell.x::after {
+    height: calc(9px/2);
+    width: calc(195px/2);
+  }
+  .cell.o::before {
+    border: calc(9px/2)solid black;
+    height: calc(195px/2);
+    width: calc(195px/2);
+  }
+}
+@media screen and (max-height: 500px) {
+  .cell {
+    height: calc(300px/3);
+    width: calc(300px/3);
+  }.cell.x::before, .cell.x::after {
+    height: calc(9px/3);
+    width: calc(195px/3);
+  }
+  .cell.o::before {
+    border: calc(9px/3)solid black;
+    height: calc(195px/3);
+    width: calc(195px/3);
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .cell {
+    height: calc(300px/3);
+    width: calc(300px/3);
+  }.cell.x::before, .cell.x::after {
+    height: calc(9px/3);
+    width: calc(195px/3);
+  }
+  .cell.o::before {
+    border: calc(9px/3)solid black;
+    height: calc(195px/3);
+    width: calc(195px/3);
+  }
+}
