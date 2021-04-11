@@ -1,11 +1,8 @@
 const cells = document.querySelectorAll('.cell');
-let playerTurn = "x";
-
 let winPositions = [[1,5,9],[3,5,7],[4,5,6],[2,5,8],[1,2,3],[7,8,9],[1,4,7],[3,6,9]];
-
-
-let oPositions = [];
-let xPositions = [];
+let moves = [];
+let won = false;
+let player = "x";
 
 cells.forEach(cell => {
   cell.addEventListener('click', ()=> {
@@ -16,62 +13,52 @@ cells.forEach(cell => {
       return;
     }
 
-    if(playerTurn == "x") {
-      cell.classList.add(playerTurn);
-      winCheck(playerTurn);
-      playerTurn = "o"; 
+    if(moves[player] == undefined) {
+      moves.x = []; moves.o = [];
+    }
 
-    } else if(playerTurn == "o"){
-      cell.classList.add(playerTurn);
-      winCheck(playerTurn);
-      playerTurn = "x";
-    } 
-  })
+    moves[player].push(cellNumber);
+    winCheck();
+    if(player == "x") {
+      cell.classList.add(player);
+      player = "o"; 
+    } else if(player == "o"){
+      cell.classList.add(player);
+      player = "x";
+    }
+    if((won == false) && (moves["x"].length+moves["o"].length == 9)) {
+      alert("draw");
+      resetBoard();
+    }
+    else if(won == true) {
+      resetBoard();
+      won = false;
+    }
+  });
 })
+
+function winCheck() {
+  for(const winRow of winPositions) {
+    let streak = 0;
+    for(const winField of winRow) {
+      for(const move of moves[player]) {
+        if(winField == move) {
+          streak++;
+          if(streak == 3) {
+            alert(player+" won");
+            won = true;
+            return;
+          }
+        }
+      }
+    }
+  }
+}
 
 function resetBoard() {
   cells.forEach(cell => {
     cell.className = "cell";
+    player = "x";
+    moves = [];
   });
-}
-
-function winCheck(player) {
-  if(cells[0].classList.contains(player) && cells[4].classList.contains(player) && cells[8].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
-  else if(cells[2].classList.contains(player) && cells[4].classList.contains(player) && cells[6].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
-  
-  else if(cells[3].classList.contains(player) && cells[4].classList.contains(player) && cells[5].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
-  
-  else if(cells[1].classList.contains(player) && cells[4].classList.contains(player) && cells[7].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
-  
-  else if(cells[0].classList.contains(player) && cells[1].classList.contains(player) && cells[2].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
-  
-  else if(cells[6].classList.contains(player) && cells[7].classList.contains(player) && cells[8].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
-  
-  else if(cells[0].classList.contains(player) && cells[3].classList.contains(player) && cells[6].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
-  
-  else if(cells[2].classList.contains(player) && cells[5].classList.contains(player) && cells[8].classList.contains(player)) {
-    alert(playerTurn.toUpperCase() + " won!");
-    resetBoard();
-  }
 }
